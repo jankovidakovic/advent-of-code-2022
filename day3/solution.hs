@@ -23,6 +23,6 @@ makeTriplets :: [String] -> [(String, String, String)]
 makeTriplets xs = zip3 xs (tail xs) (tail $ tail xs)
 
 main = do
-  input <- readFile "input.txt"
-  print $ sum $ map (priority . duplicateLetter) $ lines input
-  print $ sum $ map (priority . commonChar) $ takeEachThird $ makeTriplets $ lines input
+  input <- lines <$> readFile "input.txt"
+  print $ sum $ map (priority . duplicateLetter) input
+  print $ sum $ map (priority . commonChar) $ takeEachThird $ makeTriplets input
